@@ -66,6 +66,10 @@ export const isGameStarted = (state: ReducerState): boolean => (
 	game.isGameStarted(state.game)
 );
 
+export const getConnect = (state: ReducerState): number => (
+	game.getConnect(state.game)
+);
+
 export const whoseTurn = (state: ReducerState): string | null => (
 	isGameStarted(state) ?
 		getPlayerIdByTurn(state, getTurnNumber(state)) :
