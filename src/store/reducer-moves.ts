@@ -31,3 +31,9 @@ export const getMoveColumn = (state: ReducerState, index: number): number => (
 export const getMovePlayer = (state: ReducerState, index: number): string => (
 	state[index].player
 );
+
+export const getCellPlayerId = (state: ReducerState, column: number, row: number): string | null => {
+	const columnMoves = state.filter((move) => move.column === column);
+	const move = columnMoves[row];
+	return move ? move.player : null;
+};

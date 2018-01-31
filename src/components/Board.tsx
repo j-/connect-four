@@ -12,7 +12,7 @@ const Board = (props: Props) => {
 	for (let i = 0; i < props.columns; i++) {
 		columns.push(
 			<div className="Board-column" key={i}>
-				<BoardColumn rows={props.rows} />
+				<BoardColumn column={i} rows={props.rows} />
 			</div>
 		);
 	}

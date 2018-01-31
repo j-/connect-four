@@ -34,6 +34,10 @@ export const getMovePlayer = (state: ReducerState, index: number): string => (
 	moves.getMovePlayer(state.moves, index)
 );
 
+export const getCellPlayerId = (state: ReducerState, column: number, row: number): string | null => (
+	moves.getCellPlayerId(state.moves, column, row)
+);
+
 export const getPlayerColor = (state: ReducerState, id: string): string | null => (
 	players.getPlayerColor(state.players, id)
 );
@@ -59,3 +63,12 @@ export const whoseTurn = (state: ReducerState): string | null => (
 		getPlayerIdByTurn(state, getTurnNumber(state)) :
 		null
 );
+
+export const getCellColor = (state: ReducerState, column: number, row: number): string | null => {
+	const playerId = getCellPlayerId(state, column, row);
+	if (playerId) {
+		return getPlayerColor(state, playerId);
+	} else {
+		return null;
+	}
+};

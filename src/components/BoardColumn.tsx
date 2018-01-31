@@ -3,6 +3,7 @@ import BoardCell from './BoardCell';
 import './BoardColumn.css';
 
 export interface Props {
+	column: number;
 	rows: number;
 }
 
@@ -11,7 +12,7 @@ const BoardColumn = (props: Props) => {
 	for (let i = 0; i < props.rows; i++) {
 		cells.push(
 			<div className="Board-column" key={i}>
-				<BoardCell color="transparent" />
+				<BoardCell column={props.column} row={i} />
 			</div>
 		);
 	}
