@@ -10,7 +10,7 @@
 	background-image: radial-gradient(
 		transparent 0,
 		transparent 1.35em,
-		#008 1.35em
+		hsl(220, 80%, 40%) 1.35em
 	);
 	position: absolute;
 	top: 0;

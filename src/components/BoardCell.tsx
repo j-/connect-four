@@ -13,8 +13,8 @@ const BoardCell = (props: Props) => (
 		{
 			Math.random() > 0.5 ?
 			Math.random() > 0.5 ?
-				<Piece color="red" /> :
-				<Piece color="yellow" /> :
+				<Piece color="hsl(0, 80%, 60%)" /> :
+				<Piece color="hsl(60, 80%, 60%)" /> :
 				null
 		}
 		</div>
