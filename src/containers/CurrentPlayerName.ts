@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
-import PlayerName from '../components/PlayerName';
+import MaybePlayerName from '../components/MaybePlayerName';
 import { ReducerState, getCurrentMovePlayerId } from '../store';
 
 interface StateProps {
-	name: string;
+	name: string | null;
 }
 
 const mapStateToProps = (state: ReducerState): StateProps => ({
-	name: getCurrentMovePlayerId(state) || '',
+	name: getCurrentMovePlayerId(state),
 });
 
 export default connect(
 	mapStateToProps,
-)(PlayerName);
+)(MaybePlayerName);
