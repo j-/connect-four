@@ -1,0 +1,27 @@
+.BoardCell {
+	width: 3em;
+	height: 3em;
+	position: relative;
+}
+
+.BoardCell > .BoardCell-sleeve {
+	width: 100%;
+	height: 100%;
+	background-image: radial-gradient(
+		transparent 0,
+		transparent 1.35em,
+		#008 1.35em
+	);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.BoardCell > .BoardCell-piece {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
