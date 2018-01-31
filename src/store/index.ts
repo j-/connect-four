@@ -8,3 +8,11 @@ export interface ReducerState {
 export default combineReducers<ReducerState>({
 	board: board.default,
 });
+
+export const getNumberOfColumns = (state: ReducerState): number => (
+	board.getNumberOfColumns(state.board)
+);
+
+export const getNumberOfRows = (state: ReducerState): number => (
+	board.getNumberOfRows(state.board)
+);
