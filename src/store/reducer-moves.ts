@@ -37,3 +37,7 @@ export const getCellPlayerId = (state: ReducerState, column: number, row: number
 	const move = columnMoves[row];
 	return move ? move.player : null;
 };
+
+export const isGameOver = (state: ReducerState, columns: number, rows: number): boolean => (
+	state.length >= columns * rows
+);

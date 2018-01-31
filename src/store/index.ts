@@ -38,6 +38,14 @@ export const getCellPlayerId = (state: ReducerState, column: number, row: number
 	moves.getCellPlayerId(state.moves, column, row)
 );
 
+export const isGameOver = (state: ReducerState): boolean => (
+	moves.isGameOver(
+		state.moves,
+		getNumberOfColumns(state),
+		getNumberOfRows(state)
+	)
+);
+
 export const getPlayerColor = (state: ReducerState, id: string): string | null => (
 	players.getPlayerColor(state.players, id)
 );
