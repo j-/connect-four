@@ -70,10 +70,6 @@ export const getPlayerIdByTurn = (state: ReducerState, turn: number): string => 
 	players.getPlayerIdByTurn(state.players, turn)
 );
 
-export const getTurnNumber = (state: ReducerState): number => (
-	game.getTurnNumber(state.game)
-);
-
 export const isGameStarted = (state: ReducerState): boolean => (
 	game.isGameStarted(state.game)
 );
@@ -84,7 +80,7 @@ export const getConnect = (state: ReducerState): number => (
 
 export const whoseTurn = (state: ReducerState): string | null => (
 	isGameStarted(state) ?
-		getPlayerIdByTurn(state, getTurnNumber(state)) :
+		getPlayerIdByTurn(state, getMoveCount(state)) :
 		null
 );
 
