@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { isActionMove, isActionResetGame } from './actions';
+import { isActionMove, isActionResetGame, isActionUndoMove } from './actions';
 
 export type ReducerState = Array<{
 	column: number;
@@ -17,6 +17,10 @@ const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
 				player: action.data.player,
 			},
 		];
+	}
+
+	if (isActionUndoMove(action)) {
+		return state.slice(0, state.length - 1);
 	}
 
 	if (isActionResetGame(action)) {

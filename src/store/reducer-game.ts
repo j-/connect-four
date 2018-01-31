@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { isActionMove, isActionStartGame, isActionResetGame } from './actions';
+import { isActionMove, isActionStartGame, isActionResetGame, isActionUndoMove } from './actions';
 
 export interface ReducerState {
 	turn: number;
@@ -26,6 +26,13 @@ const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
 		return {
 			...state,
 			turn: state.turn + 1,
+		};
+	}
+
+	if (isActionUndoMove(action)) {
+		return {
+			...state,
+			turn: Math.min(0, state.turn - 1),
 		};
 	}
 

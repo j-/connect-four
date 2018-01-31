@@ -20,6 +20,18 @@ export const move = (column: number, player: string): ActionMove => ({
 	},
 });
 
+export interface ActionUndoMove extends Action {
+	type: 'UndoMove';
+}
+
+export const isActionUndoMove = (action: Action): action is ActionUndoMove => (
+	action.type === 'UndoMove'
+);
+
+export const undoMove = (column: number): ActionUndoMove => ({
+	type: 'UndoMove',
+});
+
 export interface ActionAddPlayer extends Action {
 	type: 'AddPlayer';
 	data: {
