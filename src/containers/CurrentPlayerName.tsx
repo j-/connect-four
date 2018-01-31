@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import PlayerName, { Props } from '../components/PlayerName';
-import { ReducerState, whoseTurn } from '../store';
+import { ReducerState, getCurrentMovePlayerId } from '../store';
 
 const CurrentPlayerName = (props: Props) => (
 	props.name ?
@@ -14,7 +14,7 @@ interface StateProps {
 }
 
 const mapStateToProps = (state: ReducerState): StateProps => ({
-	name: whoseTurn(state),
+	name: getCurrentMovePlayerId(state),
 });
 
 export default connect(

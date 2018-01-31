@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import BoardColumn from '../components/BoardColumn';
 import { move } from '../store/actions';
 import { Dispatch, Action } from 'redux';
-import { ReducerState, whoseTurn, canPlaceInColumn } from '../store';
+import { ReducerState, getCurrentMovePlayerId, isColumnFull } from '../store';
 
 interface StateProps {
 	currentPlayer: string | null;
@@ -19,8 +19,8 @@ interface OwnProps {
 }
 
 const mapStateToProps = (state: ReducerState, props: OwnProps): StateProps => ({
-	currentPlayer: whoseTurn(state),
-	canPlaceInColumn: canPlaceInColumn(state, props.column),
+	currentPlayer: getCurrentMovePlayerId(state),
+	canPlaceInColumn: !isColumnFull(state, props.column),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>, props: OwnProps): DispatchProps => ({

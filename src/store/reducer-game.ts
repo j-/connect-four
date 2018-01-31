@@ -28,6 +28,6 @@ export const isGameStarted = (state: ReducerState): boolean => (
 	state.started
 );
 
-export const getConnect = (state: ReducerState): number => (
+export const getConnectNumber = (state: ReducerState): number => (
 	state.connect
 );

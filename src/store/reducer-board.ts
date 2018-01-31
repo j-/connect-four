@@ -16,10 +16,10 @@ const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
 
 export default reducer;
 
-export const getNumberOfColumns = (state: ReducerState): number => (
+export const getBoardColumnCount = (state: ReducerState): number => (
 	state.columns
 );
 
-export const getNumberOfRows = (state: ReducerState): number => (
+export const getBoardRowCount = (state: ReducerState): number => (
 	state.rows
 );

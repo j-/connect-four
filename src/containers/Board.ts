@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import Board, { Props } from '../components/Board';
-import { ReducerState, getNumberOfColumns, getNumberOfRows } from '../store';
+import { ReducerState, getBoardColumnCount, getBoardRowCount } from '../store';
 
 const mapStateToProps = (state: ReducerState): Props => ({
-	columns: getNumberOfColumns(state),
-	rows: getNumberOfRows(state),
+	columns: getBoardColumnCount(state),
+	rows: getBoardRowCount(state),
 });
 
 export default connect(

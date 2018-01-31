@@ -24,16 +24,16 @@ const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
 
 export default reducer;
 
-export const getPlayerColor = (state: ReducerState, id: string): string | null => (
+export const getColorByPlayerId = (state: ReducerState, id: string): string | null => (
 	state[id] ?
 		state[id].color :
 		null
 );
 
-export const getNumberOfPlayers = (state: ReducerState): number => (
+export const getPlayerCount = (state: ReducerState): number => (
 	Object.keys(state).length
 );
 
-export const getPlayerIdByTurn = (state: ReducerState, turn: number): string => (
-	Object.keys(state)[turn % getNumberOfPlayers(state)]
+export const getPlayerIdByMoveIndex = (state: ReducerState, moveIndex: number): string => (
+	Object.keys(state)[moveIndex % getPlayerCount(state)]
 );

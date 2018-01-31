@@ -18,76 +18,76 @@ export default combineReducers<ReducerState>({
 	game: game.default,
 });
 
-export const getNumberOfColumns = (state: ReducerState): number => (
-	board.getNumberOfColumns(state.board)
+export const getBoardColumnCount = (state: ReducerState): number => (
+	board.getBoardColumnCount(state.board)
 );
 
-export const getNumberOfRows = (state: ReducerState): number => (
-	board.getNumberOfRows(state.board)
+export const getBoardRowCount = (state: ReducerState): number => (
+	board.getBoardRowCount(state.board)
 );
 
-export const getMoveColumn = (state: ReducerState, index: number): number => (
-	moves.getMoveColumn(state.moves, index)
+export const getMoveColumnIndex = (state: ReducerState, moveIndex: number): number => (
+	moves.getMoveColumnIndex(state.moves, moveIndex)
 );
 
-export const getMovePlayer = (state: ReducerState, index: number): string => (
-	moves.getMovePlayer(state.moves, index)
+export const getMovePlayerId = (state: ReducerState, moveIndex: number): string => (
+	moves.getMovePlayerId(state.moves, moveIndex)
 );
 
 export const getMoveCount = (state: ReducerState): number => (
 	moves.getMoveCount(state.moves)
 );
 
-export const getColumnMoveCount = (state: ReducerState, column: number): number => (
-	moves.getColumnMoveCount(state.moves, column)
+export const getMoveCountByColumnIndex = (state: ReducerState, columnIndex: number): number => (
+	moves.getMoveCountByColumnIndex(state.moves, columnIndex)
 );
 
-export const canPlaceInColumn = (state: ReducerState, column: number): boolean => (
-	getColumnMoveCount(state, column) < getNumberOfRows(state)
+export const isColumnFull = (state: ReducerState, columnIndex: number): boolean => (
+	getMoveCountByColumnIndex(state, columnIndex) >= getBoardRowCount(state)
 );
 
-export const getCellPlayerId = (state: ReducerState, column: number, row: number): string | null => (
-	moves.getCellPlayerId(state.moves, column, row)
+export const getMovePlayerIdAtCell = (state: ReducerState, columnIndex: number, rowIndex: number): string | null => (
+	moves.getMovePlayerIdAtCell(state.moves, columnIndex, rowIndex)
 );
 
 export const isGameOver = (state: ReducerState): boolean => (
-	moves.isGameOver(
+	moves.isBoardFull(
 		state.moves,
-		getNumberOfColumns(state),
-		getNumberOfRows(state)
+		getBoardColumnCount(state),
+		getBoardRowCount(state)
 	)
 );
 
-export const getPlayerColor = (state: ReducerState, id: string): string | null => (
-	players.getPlayerColor(state.players, id)
+export const getColorByPlayerId = (state: ReducerState, playerId: string): string | null => (
+	players.getColorByPlayerId(state.players, playerId)
 );
 
-export const getNumberOfPlayers = (state: ReducerState): number => (
-	players.getNumberOfPlayers(state.players)
+export const getPlayerCount = (state: ReducerState): number => (
+	players.getPlayerCount(state.players)
 );
 
-export const getPlayerIdByTurn = (state: ReducerState, turn: number): string => (
-	players.getPlayerIdByTurn(state.players, turn)
+export const getPlayerIdByMoveIndex = (state: ReducerState, moveIndex: number): string => (
+	players.getPlayerIdByMoveIndex(state.players, moveIndex)
 );
 
 export const isGameStarted = (state: ReducerState): boolean => (
 	game.isGameStarted(state.game)
 );
 
-export const getConnect = (state: ReducerState): number => (
-	game.getConnect(state.game)
+export const getConnectNumber = (state: ReducerState): number => (
+	game.getConnectNumber(state.game)
 );
 
-export const whoseTurn = (state: ReducerState): string | null => (
+export const getCurrentMovePlayerId = (state: ReducerState): string | null => (
 	isGameStarted(state) ?
-		getPlayerIdByTurn(state, getMoveCount(state)) :
+		getPlayerIdByMoveIndex(state, getMoveCount(state)) :
 		null
 );
 
-export const getCellColor = (state: ReducerState, column: number, row: number): string | null => {
-	const playerId = getCellPlayerId(state, column, row);
+export const getCellColor = (state: ReducerState, columnIndex: number, rowIndex: number): string | null => {
+	const playerId = getMovePlayerIdAtCell(state, columnIndex, rowIndex);
 	if (playerId) {
-		return getPlayerColor(state, playerId);
+		return getColorByPlayerId(state, playerId);
 	} else {
 		return null;
 	}
