@@ -5,7 +5,8 @@ import './BoardColumn.css';
 export interface Props {
 	column: number;
 	rows: number;
-	onClick: () => void;
+	currentPlayer: string | null;
+	move: (currentPlayer: string) => void;
 }
 
 const BoardColumn = (props: Props) => {
@@ -17,8 +18,13 @@ const BoardColumn = (props: Props) => {
 			</div>
 		);
 	}
+	const move = () => {
+		if (props.currentPlayer) {
+			props.move(props.currentPlayer);
+		}
+	};
 	return (
-		<div className="BoardColumn" onClick={props.onClick}>
+		<div className="BoardColumn" onMouseDown={move}>
 			{cells}
 		</div>
 	);
