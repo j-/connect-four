@@ -1,5 +1,5 @@
 import * as React from 'react';
-import BoardColumn from './BoardColumn';
+import BoardColumn from '../containers/BoardColumn';
 import './Board.css';
 
 export interface Props {

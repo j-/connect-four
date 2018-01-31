@@ -5,6 +5,7 @@ import './BoardColumn.css';
 export interface Props {
 	column: number;
 	rows: number;
+	onClick: () => void;
 }
 
 const BoardColumn = (props: Props) => {
@@ -17,7 +18,7 @@ const BoardColumn = (props: Props) => {
 		);
 	}
 	return (
-		<div className="BoardColumn">
+		<div className="BoardColumn" onClick={props.onClick}>
 			{cells}
 		</div>
 	);
