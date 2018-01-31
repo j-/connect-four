@@ -8,15 +8,15 @@ import UndoMoveButton from '../containers/UndoMoveButton';
 const App = () => (
 	<div className="App">
 		<Board />
+		<br />
+
 		<GameStartedState />
+		<br />
+
 		<div>Current player: <CurrentPlayerName /></div>
+		<br />
 
-		<br />
-		<br />
 		<UndoMoveButton>Undo</UndoMoveButton>
-
-		<br />
-		<br />
 		<ResetGameButton>Reset game</ResetGameButton>
 	</div>
 );
