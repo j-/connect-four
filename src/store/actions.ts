@@ -39,3 +39,15 @@ export const addPlayer = (id: string, color: string): ActionAddPlayer => ({
 		color,
 	},
 });
+
+export interface ActionStart extends Action {
+	type: 'Start';
+}
+
+export const isActionStart = (action: Action): action is ActionStart => (
+	action.type === 'Start'
+);
+
+export const start = (): ActionStart => ({
+	type: 'Start',
+});

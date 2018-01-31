@@ -38,10 +38,24 @@ export const getPlayerColor = (state: ReducerState, id: string): string | null =
 	players.getPlayerColor(state.players, id)
 );
 
+export const getNumberOfPlayers = (state: ReducerState): number => (
+	players.getNumberOfPlayers(state.players)
+);
+
+export const getPlayerIdByTurn = (state: ReducerState, turn: number): string => (
+	players.getPlayerIdByTurn(state.players, turn)
+);
+
 export const getTurnNumber = (state: ReducerState): number => (
 	game.getTurnNumber(state.game)
 );
 
 export const isGameStarted = (state: ReducerState): boolean => (
 	game.isGameStarted(state.game)
+);
+
+export const whoseTurn = (state: ReducerState): string | null => (
+	isGameStarted(state) ?
+		getPlayerIdByTurn(state, getTurnNumber(state)) :
+		null
 );

@@ -32,3 +32,11 @@ export const getPlayerColor = (state: ReducerState, id: string): string | null =
 		return null;
 	}
 };
+
+export const getNumberOfPlayers = (state: ReducerState): number => (
+	state.length
+);
+
+export const getPlayerIdByTurn = (state: ReducerState, turn: number): string => (
+	state[turn % state.length].id
+);

@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+import { isActionMove } from './actions';
 
 export interface ReducerState {
 	turn: number;
@@ -11,6 +12,13 @@ const DEFAULT_STATE: ReducerState = {
 };
 
 const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
+	if (isActionMove(action)) {
+		return {
+			...state,
+			turn: state.turn + 1,
+		};
+	}
+
 	return state;
 };
 
