@@ -18,8 +18,9 @@ const BoardColumn = (props: Props) => {
 			</div>
 		);
 	}
-	const move = () => {
+	const move = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (props.currentPlayer) {
+			e.preventDefault();
 			props.move(props.currentPlayer);
 		}
 	};
