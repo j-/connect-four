@@ -12,8 +12,8 @@ import { addPlayer, start } from './store/actions';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
-store.dispatch(addPlayer('Player 1', 'yellow'));
-store.dispatch(addPlayer('Player 2', 'red'));
+store.dispatch(addPlayer('Yellow', 'hsl(60, 80%, 60%)'));
+store.dispatch(addPlayer('Red', 'hsl(0, 80%, 60%)'));
 store.dispatch(start());
 
 ReactDOM.render(
