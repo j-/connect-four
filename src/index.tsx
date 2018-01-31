@@ -12,8 +12,8 @@ import { addPlayer, start } from './store/actions';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
-store.dispatch(addPlayer('1', 'yellow'));
-store.dispatch(addPlayer('2', 'red'));
+store.dispatch(addPlayer('Player 1', 'yellow'));
+store.dispatch(addPlayer('Player 2', 'red'));
 store.dispatch(start());
 
 ReactDOM.render(
