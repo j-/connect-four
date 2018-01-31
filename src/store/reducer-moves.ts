@@ -36,6 +36,14 @@ export const getMovePlayer = (state: ReducerState, index: number): string => (
 	state[index].player
 );
 
+export const getMoveCount = (state: ReducerState): number => (
+	state.length
+);
+
+export const getColumnMoveCount = (state: ReducerState, column: number): number => (
+	state.reduce((total, move) => move.column === column ? total + 1 : total, 0)
+);
+
 export const getCellPlayerId = (state: ReducerState, column: number, row: number): string | null => {
 	const columnMoves = state.filter((move) => move.column === column);
 	const move = columnMoves[row];

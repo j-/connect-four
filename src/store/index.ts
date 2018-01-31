@@ -34,6 +34,18 @@ export const getMovePlayer = (state: ReducerState, index: number): string => (
 	moves.getMovePlayer(state.moves, index)
 );
 
+export const getMoveCount = (state: ReducerState): number => (
+	moves.getMoveCount(state.moves)
+);
+
+export const getColumnMoveCount = (state: ReducerState, column: number): number => (
+	moves.getColumnMoveCount(state.moves, column)
+);
+
+export const canPlaceInColumn = (state: ReducerState, column: number): boolean => (
+	getColumnMoveCount(state, column) < getNumberOfRows(state)
+);
+
 export const getCellPlayerId = (state: ReducerState, column: number, row: number): string | null => (
 	moves.getCellPlayerId(state.moves, column, row)
 );

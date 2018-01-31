@@ -6,6 +6,7 @@ export interface Props {
 	column: number;
 	rows: number;
 	currentPlayer: string | null;
+	canPlaceInColumn: boolean;
 	move: (currentPlayer: string) => void;
 }
 
@@ -24,8 +25,12 @@ const BoardColumn = (props: Props) => {
 			props.move(props.currentPlayer);
 		}
 	};
+	let className = 'BoardColumn';
+	if (props.canPlaceInColumn) {
+		className += ' BoardColumn--can-place';
+	}
 	return (
-		<div className="BoardColumn" onMouseDown={move}>
+		<div className={className} onMouseDown={props.canPlaceInColumn ? move : undefined}>
 			{cells}
 		</div>
 	);

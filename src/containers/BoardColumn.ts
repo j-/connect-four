@@ -2,10 +2,11 @@ import { connect } from 'react-redux';
 import BoardColumn from '../components/BoardColumn';
 import { move } from '../store/actions';
 import { Dispatch, Action } from 'redux';
-import { ReducerState, whoseTurn } from '../store';
+import { ReducerState, whoseTurn, canPlaceInColumn } from '../store';
 
 interface StateProps {
 	currentPlayer: string | null;
+	canPlaceInColumn: boolean;
 }
 
 interface DispatchProps {
@@ -17,8 +18,9 @@ interface OwnProps {
 	rows: number;
 }
 
-const mapStateToProps = (state: ReducerState): StateProps => ({
+const mapStateToProps = (state: ReducerState, props: OwnProps): StateProps => ({
 	currentPlayer: whoseTurn(state),
+	canPlaceInColumn: canPlaceInColumn(state, props.column),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>, props: OwnProps): DispatchProps => ({
