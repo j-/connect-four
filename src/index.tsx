@@ -8,7 +8,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider as StoreProvider } from 'react-redux';
 import './index.css';
 
+import { addPlayer } from './store/actions';
+
 const store = createStore(rootReducer, composeWithDevTools());
+
+store.dispatch(addPlayer('1', 'yellow'));
+store.dispatch(addPlayer('2', 'red'));
 
 ReactDOM.render(
 	<StoreProvider store={store}>

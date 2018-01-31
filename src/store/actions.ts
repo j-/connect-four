@@ -19,3 +19,23 @@ export const move = (column: number, player: string): ActionMove => ({
 		player,
 	},
 });
+
+export interface ActionAddPlayer extends Action {
+	type: 'AddPlayer';
+	data: {
+		id: string;
+		color: string;
+	};
+}
+
+export const isActionAddPlayer = (action: Action): action is ActionAddPlayer => (
+	action.type === 'AddPlayer'
+);
+
+export const addPlayer = (id: string, color: string): ActionAddPlayer => ({
+	type: 'AddPlayer',
+	data: {
+		id,
+		color,
+	},
+});
