@@ -5,9 +5,9 @@ export interface Props {
 }
 
 const PlayerName = (props: Props) => (
-	<div className="PlayerName">
+	<strong className="PlayerName">
 		{props.name}
-	</div>
+	</strong>
 );
 
 export default PlayerName;
