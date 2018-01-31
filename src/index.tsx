@@ -8,13 +8,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider as StoreProvider } from 'react-redux';
 import './index.css';
 
-import { addPlayer, start } from './store/actions';
+import { addPlayer, startGame } from './store/actions';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
 store.dispatch(addPlayer('Yellow', 'hsl(60, 80%, 60%)'));
 store.dispatch(addPlayer('Red', 'hsl(0, 80%, 60%)'));
-store.dispatch(start());
+store.dispatch(startGame());
 
 ReactDOM.render(
 	<StoreProvider store={store}>

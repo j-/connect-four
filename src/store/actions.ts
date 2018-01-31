@@ -40,14 +40,26 @@ export const addPlayer = (id: string, color: string): ActionAddPlayer => ({
 	},
 });
 
-export interface ActionStart extends Action {
-	type: 'Start';
+export interface ActionStartGame extends Action {
+	type: 'StartGame';
 }
 
-export const isActionStart = (action: Action): action is ActionStart => (
-	action.type === 'Start'
+export const isActionStartGame = (action: Action): action is ActionStartGame => (
+	action.type === 'StartGame'
 );
 
-export const start = (): ActionStart => ({
-	type: 'Start',
+export const startGame = (): ActionStartGame => ({
+	type: 'StartGame',
+});
+
+export interface ActionResetGame extends Action {
+	type: 'ResetGame';
+}
+
+export const isActionResetGame = (action: Action): action is ActionResetGame => (
+	action.type === 'ResetGame'
+);
+
+export const resetGame = (): ActionResetGame => ({
+	type: 'ResetGame',
 });

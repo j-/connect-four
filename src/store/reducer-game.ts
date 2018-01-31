@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { isActionMove, isActionStart } from './actions';
+import { isActionMove, isActionStartGame, isActionResetGame } from './actions';
 
 export interface ReducerState {
 	turn: number;
@@ -12,9 +12,9 @@ const DEFAULT_STATE: ReducerState = {
 };
 
 const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
-	if (isActionStart(action)) {
+	if (isActionStartGame(action) || isActionResetGame(action)) {
 		return {
-			...state,
+			turn: 0,
 			started: true,
 		};
 	}
